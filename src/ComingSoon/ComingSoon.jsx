@@ -18,6 +18,23 @@ const ComingSoon = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const now = new Date();
+  const today7PM = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    19,
+    0,
+    0
+  ); // Today at 7 PM (19:00 in 24-hour format)
+
+  // If it's already past 7 PM today, set it to tomorrow 7 PM
+  if (now.getTime() > today7PM.getTime()) {
+    today7PM.setDate(today7PM.getDate() + 1); // Move to tomorrow 7 PM
+  }
+
+  const countdownTime = today7PM.getTime();
+
   return (
     <div className="coming-soon-container">
       <video autoPlay loop playsInline id="background-video">
@@ -29,7 +46,7 @@ const ComingSoon = () => {
       <h1 className="title">COMING SOON</h1>
       <div className="countdown">
         <FlipClockCountdown
-          to={new Date().getTime() + 24 * 3600 * 1000 + 5000}
+          to={countdownTime}
           labels={["DAYS", "HOURS", "MINUTES", "SECONDS"]}
           labelStyle={{
             fontSize: isMobile ? 8 : 10, // Smaller font for mobile
