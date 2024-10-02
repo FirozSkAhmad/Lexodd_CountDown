@@ -37,7 +37,7 @@ const ComingSoon = () => {
 
   return (
     <div className="coming-soon-container">
-      <video autoPlay loop playsInline id="background-video">
+      <video autoPlay loop muted playsInline id="background-video">
         <source
           src="https://lexodd.s3.ap-south-1.amazonaws.com/LEXODD+PROMO.mp4"
           type="video/mp4"
