@@ -18,6 +18,17 @@ const ComingSoon = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    const video = document.getElementById("background-video");
+
+    if (video) {
+      video.muted = false; // Video will play with sound
+      video.play().catch((error) => {
+        console.log("Error playing video with sound: ", error);
+      });
+    }
+  }, []);
+
   const now = new Date();
   const today7PM = new Date(
     now.getFullYear(),
@@ -37,12 +48,13 @@ const ComingSoon = () => {
 
   return (
     <div className="coming-soon-container">
-      <video autoPlay loop muted playsInline id="background-video">
+      <video id="background-video" playsInline loop>
         <source
           src="https://lexodd.s3.ap-south-1.amazonaws.com/LEXODD+PROMO.mp4"
           type="video/mp4"
         />
       </video>
+
       <h1 className="title">COMING SOON</h1>
       <div className="countdown">
         <FlipClockCountdown
@@ -71,3 +83,7 @@ const ComingSoon = () => {
 };
 
 export default ComingSoon;
+
+
+
+
