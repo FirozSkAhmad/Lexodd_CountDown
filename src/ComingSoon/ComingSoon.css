@@ -31,7 +31,8 @@
 
 @media (max-width: 768px) {
   #background-video {
-    width: 100%;
+    width: auto;
+    height: 100vh;
   }
   .title {
     font-size: 1.5rem;
